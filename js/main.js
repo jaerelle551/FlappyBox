@@ -15,20 +15,38 @@ prelod: function () {
    //Set the background color of the game
    game.stage.backgroundColor ="#71c5cf";
    
+   game.load.imnage('bird', 'assets/bird.png');
+
+   game.load.image('pipe', 'assets/pipe.png');
    
+
 },
 
 
   create: function () {
     //This Function is called right after preload function  
     //This is where we set up the game assets from earlier
+  
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+ 
+  this.bird = this.game.add.sprite(100, 245, 'bird');
+ 
+ 
+  //Now that we have a bird and gravity...we need to tell the bird
+  //to react to the gravity
+  
+  game.physics.arcade.enable(this.bird);
+  
+  this.bird.body.gravity.y = 1000;
+ 
+ 
  },
  
   update: function () {
      //This function runs 60 times per second
   },
   
-  }
+  };
   
   
   //Add and start the 'mainState' to start the game
